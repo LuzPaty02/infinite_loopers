@@ -2,6 +2,14 @@ comandos basicos besties
 npm install
 npm run dev
 
+python:
+pip install flask, flask-cors
 
 para las APIs: 
-npm install axios
+npm install axios, cors
+
+styles:
+npm install -D tailwindcss
+npx tailwindcss init
+
+
