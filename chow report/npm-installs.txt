@@ -1,0 +1,7 @@
+comandos basicos besties 
+npm install
+npm run dev
+
+
+para las APIs: 
+npm install axios
