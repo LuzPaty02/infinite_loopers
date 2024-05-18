@@ -6,10 +6,3 @@ cred = credentials.Certificate("infinite_loopers/chow report/backend/chow-report
 firebase_admin.initialize_app(cred, {
     'databaseURL': 'https://chow-report.firebaseio.com'
 })
-
-ref = db.reference('/')
-ref.set({
-    'users': {},
-    'posts': {},
-    'comments': {}
-})
