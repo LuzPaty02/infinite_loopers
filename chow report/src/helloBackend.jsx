@@ -21,7 +21,7 @@ const HelloBackend = () => {
 
   return (
     <div>
-      <p>Message from Flask backend: {message}</p>
+      <p className='text-sky-400'>Message from Flask backend: {message}</p>
     </div>
   );
 };
