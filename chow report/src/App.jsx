@@ -3,7 +3,6 @@ import { Route, Routes } from 'react-router-dom'
 import UserReport from './user/UserReport.jsx'
 import GenerateReport from './user/GenerateReport'
 
-
 function App () {
     return (
         <Routes>
