@@ -19,11 +19,13 @@ const UserProfile = () => {
                 <div>
                     <p>a01637205@tec.mx</p>
                 </div>
-                <button
-                    className="mt-8 px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none focus:bg-red-600"
-                >
-                    Cerrar sesión
-                </button>
+                <a href="/">                
+                    <button
+                        className="mt-8 px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none focus:bg-red-600"
+                    >
+                        Cerrar sesión
+                    </button>
+                </a>
             </div>
         </>
     );
