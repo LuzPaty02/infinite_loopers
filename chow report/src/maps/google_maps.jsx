@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { MAPS_API_KEY } from '../../credentials.js';
+import { ref, push } from 'firebase/database';
+import { database } from '../user/firebase.js';
 
 const Google_Maps = () => {
   const mapRef = useRef(null);
@@ -27,7 +29,7 @@ const Google_Maps = () => {
 
   const initMap = () => {
     const map = new google.maps.Map(mapRef.current, {
-      center: { lat: 20.6763989, lng:  -103.3479102 },
+      center: { lat: 20.6763989, lng: -103.3479102 },
       zoom: 9,
       mapTypeControl: false,
       streetViewControl: false,
@@ -62,32 +64,52 @@ const Google_Maps = () => {
             lat: position.coords.latitude,
             lng: position.coords.longitude,
           };
-  
+
           // Remove any existing marker
           if (infoWindowRef.current) {
             infoWindowRef.current.close();
             infoWindowRef.current = null;
           }
-  
+
           // Create a marker at the user's current location
           const marker = new google.maps.Marker({
             position: pos,
             map: mapInstanceRef.current,
             title: "You are here!",
           });
-  
+
           // Set map center and zoom
           mapInstanceRef.current.setCenter(pos);
           mapInstanceRef.current.setZoom(15); // Zoom to a specific level, e.g., 15
-  
+
           // Create and open an info window
           const infoWindow = new google.maps.InfoWindow({
             content: "You are here!",
           });
           infoWindow.open(mapInstanceRef.current, marker);
-  
+
           // Store the infoWindow reference
           infoWindowRef.current = infoWindow;
+
+          // Prepare location data
+          const locationData = {
+            latitude: pos.lat,
+            longitude: pos.lng,
+            timestamp: new Date().toISOString()
+          };
+
+          // Console log for checking the location data
+          console.log('Location data:', locationData);
+
+          // Push data to Firebase
+          const locationsRef = ref(database, 'locations');
+          push(locationsRef, locationData)
+            .then(() => {
+              console.log('Location saved to Firebase!');
+            })
+            .catch((error) => {
+              console.error('Error saving location to Firebase:', error);
+            });
         },
         () => {
           handleLocationError(true, mapInstanceRef.current.getCenter());
@@ -97,19 +119,15 @@ const Google_Maps = () => {
       handleLocationError(false, mapInstanceRef.current.getCenter());
     }
   };
-  
+
   return (
-<div 
-style={{ padding: '10px',width: '90vw', height: '50vh'}}
->
-      <div id="map" ref={mapRef} 
-      style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, borderRadius:50 }} 
-      />
+    <div style={{ padding: '10px', width: '90vw', height: '50vh' }}>
+      <div id="map" ref={mapRef} style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, borderRadius: 50 }} />
       <button
         onClick={handlePanToLocation}
         className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white px-4 py-2 rounded shadow-md hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300 transition duration-300 ease-in-out"
       >
-        Pan to Current Location
+        Cargar ubicación actual
       </button>
     </div>
   );
