@@ -27,7 +27,7 @@ const Google_Maps = () => {
 
   const initMap = () => {
     const map = new google.maps.Map(mapRef.current, {
-      center: { lat: 20.6763989, lng:  -103.3479102 },
+      center: { lat: -34.397, lng: 150.644 },
       zoom: 9,
       mapTypeControl: false,
       streetViewControl: false,
@@ -46,6 +46,7 @@ const Google_Maps = () => {
     );
     infoWindowRef.current.open(mapInstanceRef.current);
   };
+  
 
   useEffect(() => {
     const cleanupScript = loadGoogleMapsScript();
@@ -63,6 +64,9 @@ const Google_Maps = () => {
             lng: position.coords.longitude,
           };
   
+          // Save the location
+          saveLocation(pos);
+
           // Remove any existing marker
           if (infoWindowRef.current) {
             infoWindowRef.current.close();
@@ -99,8 +103,8 @@ const Google_Maps = () => {
   };
   
   return (
-<div style={{ position: 'relative', width: '100%', height: '50vh'}}>
-      <div id="map" ref={mapRef} style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, borderRadius:20}} />
+    <div style={{ position: 'relative', width: '100%', height: '50vh' }}>
+      <div id="map" ref={mapRef} style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }} />
       <button
         onClick={handlePanToLocation}
         className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white px-4 py-2 rounded shadow-md hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300 transition duration-300 ease-in-out"
