@@ -99,19 +99,15 @@ const Google_Maps = () => {
   };
   
   return (
-<div 
-style={{ padding: '10px',width: '90vw', height: '50vh'}}
->
-      <div id="map" ref={mapRef} 
-      style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, borderRadius:50 }} 
-      />
-      <button
-        onClick={handlePanToLocation}
-        className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white px-4 py-2 rounded shadow-md hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300 transition duration-300 ease-in-out"
-      >
-        Pan to Current Location
-      </button>
-    </div>
+    <div style={{ width: '1/4', height: '50vh', position: 'relative', margin:'20px', borderRadius: '10px', overflow: 'hidden' }}>
+    <div id="map" ref={mapRef} style={{ width: '100%', height: '100%' }} />
+    <button
+      onClick={handlePanToLocation}
+      style={{ position: 'absolute', bottom: '10px', left: '50%', transform: 'translateX(-50%)', backgroundColor: '#007bff', color: '#fff', padding: '10px', borderRadius: '5px', border: 'none', cursor: 'pointer' }}
+    >
+      Cargar ubicación actual
+    </button>
+  </div>
   );
 };
 
