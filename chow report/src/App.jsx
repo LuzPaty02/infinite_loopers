@@ -1,9 +1,8 @@
-import HelloBackend from "./helloBackend"
-
+import Google_Maps from "./google_maps"
 function App() {
   return (
     <>
-    <HelloBackend />
+    <Google_Maps />
     </>
   )
 }
