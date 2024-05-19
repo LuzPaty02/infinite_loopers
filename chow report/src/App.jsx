@@ -5,6 +5,9 @@ import GenerateReport from './user/GenerateReport.jsx'
 import UserPage from './user/UserPage.jsx'
 import UserProfile from './user/UserProfile.jsx'
 import OngPage from './ong/OngPage.jsx'
+import Login from "./ong/login"
+import SignupONG from "./ong/signupONG"
+import SignupUsers from "./ong/signupUsers"
 
 function App () {
     return (
@@ -14,8 +17,11 @@ function App () {
                 <Route path="/user-report" element={<UserReport />} />
                 <Route path="/generate-report" element={<GenerateReport />} />
                 <Route path="/ong-page" element={<OngPage />} />
+                <Route path="/" element={<Login />} />
+                <Route path="/signupONG" element={<SignupONG />} />
+                <Route path="/signupUsers" element={<SignupUsers />} />
+
         </Routes>
     )
 }
-
 export default App;
