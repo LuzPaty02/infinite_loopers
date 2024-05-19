@@ -20,9 +20,14 @@ const OngPage = () => {
     };
 
     return (
-        <div className="flex flex-col md:flex-row">
+        <div className="flex flex-col md:flex-row relative">
             <div className="md:w-3/4">
-                <div className="min-h-screen bg-origin-border h-14 bg-gradient-to-bl from-blue-50 to-indigo-300 flex justify-center items-center">
+                <div className="min-h-screen bg-origin-border h-14 bg-gradient-to-bl from-blue-50 to-indigo-300 flex justify-center items-center relative">
+                    {/* Symbol 1 */}
+                    <img src="https://img.icons8.com/plasticine/100/000000/marker.png" alt="Marker 1" className="absolute top-1/4 left-1/4" />
+                    {/* Symbol 2 */}
+                    <img src="https://img.icons8.com/plasticine/100/000000/marker.png" alt="Marker 2" className="absolute top-1/2 left-1/2" />
+                    {/* Google Map Image */}
                     <img src="https://media.wired.com/photos/59269cd37034dc5f91bec0f1/191:100/w_1280,c_limit/GoogleMapTA.jpg" alt="Google" className="object-cover mx-auto" />
                 </div>
             </div>
