@@ -25,6 +25,20 @@ const UserReport = () => {
           >
             Pan to Current Location
           </button>
+          <a href="/generate-report">
+                <button 
+                    style={{ 
+                        backgroundColor: '#D77A93', 
+                        position: 'absolute', 
+                        top: '110%', 
+                        left: '50%', 
+                        transform: 'translate(-50%, -50%)' 
+                    }} 
+                    className="text-white py-6 px-12 rounded-md shadow-md hover:bg-opacity-80"
+                >
+                    Reportar
+                </button>
+            </a>
         </div> 
       </div>
     </>
