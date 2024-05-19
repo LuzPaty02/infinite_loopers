@@ -1,6 +1,5 @@
 import React from 'react';
 import Navbar from './Navbar';
-import UserPage from './UserPage';
 
 const UserReport = () => {
     return (
