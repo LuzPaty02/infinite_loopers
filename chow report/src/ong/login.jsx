@@ -1,38 +1,33 @@
 // Login.jsx
+
+import { app, database } from './firebase.js';
 import React, { useState } from 'react';
-import { database } from './firebase'; // Ensure this path is correct
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+
+const auth = getAuth(app);
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  console.log(`Email: ${email}, Password: ${password}`);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     try {
-      // Fetch all users from the database
-      const usersRef = database.ref('users');
-      usersRef.once('value', (snapshot) => {
-        const users = snapshot.val();
-        let userExists = false;
-
-        // Check if the provided email and password match any user in the database
-        for (let key in users) {
-          if (users[key].correo === email && users[key].contraseña === password) {
-            userExists = true;
-            console.log('User exists:', users[key]);
-            window.location.href = '/dashboard'; // Redirect to a dashboard or another page
-            break;
-          } 
-        }
-
-        if (!userExists) {
-          setError('Invalid email or password');
-        }
-      });
-    } catch (err) {
-      console.error(err);
-      setError('Failed to log in');
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+      // ...
+    } catch (error) {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.error(`Error code: ${errorCode}, Error message: ${errorMessage}`);
+      if (errorCode === 'auth/user-not-found') {
+        setError('Usuario no encontrado. Por favor, regístrate.');
+      } else {
+        setError('Credenciales incorrectas.');
+      }
     }
   };
 
@@ -76,7 +71,14 @@ const Login = () => {
           </div>
 
           <div>
-            <button type="submit" className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+            <button
+              type="submit"
+              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              onClick={() => {
+              // Redirect to dashboard
+                window.location.href = '/dashboard';
+              }}
+            >
               Iniciar Sesión
             </button>
           </div>
@@ -85,7 +87,12 @@ const Login = () => {
 
         <p className="mt-10 text-center text-sm text-gray-500">
           ¿No tienes una cuenta?
-          <a href="/signup" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"> Regístrate</a>
+          <a href="/signupUsers" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"> Registro usuario</a>
+        </p>
+
+        <p className="mt-10 text-center text-sm text-gray-500">
+          ¿Quieres registrar una organización?
+          <a href="/signupONG" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"> Registro organizaciones</a>
         </p>
       </div>
     </div>

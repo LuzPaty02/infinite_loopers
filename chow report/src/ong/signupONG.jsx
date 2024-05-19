@@ -1,9 +1,9 @@
-// Signup.jsx
+// SignupONG.jsx
 
 import React, { useState } from 'react';
 import { database } from './firebase';
 
-const Signup = () => {
+const SignupONG = () => {
   const [formData, setFormData] = useState({
     orgNombre: '',
     descripcion: '',
@@ -181,4 +181,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default SignupONG;
