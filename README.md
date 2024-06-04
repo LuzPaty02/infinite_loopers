@@ -18,6 +18,16 @@ To target more. Having an holistic view of the issue, we aim to work on differen
 
 ## How we built it
 We built the project using mostly Python for the backend and React integrated with Tailwind's CSS library Flowbite for the frontend. We used K-means clustering for the clusters and the Google Maps API for the locations and maps embedding.
+
+<p align="center">
+  <img src="chow%20report/src/assets/react-javascript-js-framework-facebook-svgrepo-com.svg" alt="React" width="90" height="90">
+  <img src="chow%20report/src/assets/firebase-svgrepo-com.svg" alt="Firebase" width="90" height="90">
+  <img src="chow%20report/src/assets/pandas-svgrepo-com.svg" alt="Pandas" width="90" height="90">
+  <img src="chow%20report/src/assets/python-svgrepo-com.svg" alt="Python" width="90" height="90">
+  <img src="chow report/src/assets/google-maps-svgrepo-com.svg" alt="Google Maps" width="80" height="80">
+  <img src="chow report/src/assets/tailwind-svgrepo-com.svg" alt="Tailwind" width="90" height="90">
+</p>
+
 ![Clustering](chow%20report/src/assets/6.jpg)
 
 ## Challenges we ran into
