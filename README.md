@@ -33,5 +33,10 @@ We built the project using mostly Python for the backend and React integrated wi
 ## Challenges we ran into
 We had a lot of trouble connecting to the database and displaying the Google Maps API.
 
+![](chow%20report/src/assets/img_front.png)
+
+## Visualitazion demos with Power BI 
+![](chow%20report/src/assets/img_powerbi.png)
+![](chow%20report/src/assets/img_powerbi_1.png)
 ## What's next for Chow Report
 Chow Report can be scaled to all types of organizations (first responders, feminist collectives, etc.) and can grow to be available worldwide.

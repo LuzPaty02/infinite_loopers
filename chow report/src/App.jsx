@@ -1,11 +1,16 @@
-import HelloBackend from "./helloBackend"
+import KMeansViewer from "./KMeansViewer";
+import HelloBackend from "./helloBackend";
+
+
+
 
 function App() {
   return (
     <>
-    <HelloBackend />
+     <HelloBackend />;
+      {/* <KMeansViewer /> */}
     </>
-  )
+  );
 }
 
-export default App
+export default App;
